@@ -10,8 +10,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run a simple script
-        run: echo "Hello Github Actions"
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
@@ -22,16 +24,6 @@ jobs:
         run: |
           echo "Running tests.."
           python -m unittest discover
-          
-      - name: Build application
-        run: |
-          echo "building application.."
-          npm install
-          npm run build
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+        
 
       
